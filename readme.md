@@ -100,3 +100,36 @@ tsc --init
 ```
 pnpm add webpack webpack-cli -D
 ```
+
+# 配置webpack.base.ts文件
+```
+import { Configuration } from 'webpack';
+const path = require("path");
+
+const baseConfig: Configuration = {
+  entry: path.join(__dirname, "../src/index.tsx"), // 入口文件
+  // 打包出口文件
+  output: {
+    filename: "static/js/[name].js", // 每个输出js的名称
+    path: path.join(__dirname, "../dist"), // 打包结果输出路径
+    clean: true, // webpack4需要配置clean-webpack-plugin来删除dist文件,webpack5内置了
+    publicPath: "/", // 打包后文件的公共前缀路径
+  },
+  // loader 配置
+  module: {
+    rules: [],
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".jsx", ".js"],
+  },
+  // plugins 的配置
+  plugins: []
+};
+```
+path.resolve 与 path.join 的区别：
+https://juejin.cn/post/6844903861920989198
+## 解决require报错：安装@types/node
+由于typescript自身的机制，需要一份xx.d.ts声明文件，来说明模块对外公开的方法和属性的类型以及内容。对于内建模块，安装一个@types/node模块可以整体解决模块的声明文件问题。
+```
+pnpm add @types/node -D
+```
