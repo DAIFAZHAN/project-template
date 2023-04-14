@@ -267,3 +267,11 @@ c.我们希望能够找到源代码的错误，而不是打包后的，所以需
 ```
 "dev": "webpack serve -c build/webpack.dev.ts"
 ```
+
+# 配置tsconfig.json中"jsx": "react-jsx"
+```
+"jsx": "react-jsx"
+```
+升级到React17后，带来了全新的JSX转换，无需手动引入React，由Babel 或 TypeScript 在编译阶段自动引入_jsx依赖。
+
+但是如果你的项目使用的是typescript, 不更新相关配置，是无法识别到React的这一更新的，这就导致.tsx文件如果不引入React模块，jsx语法会报错。
