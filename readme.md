@@ -133,3 +133,8 @@ https://juejin.cn/post/6844903861920989198
 ```
 pnpm add @types/node -D
 ```
+
+# 安装CSS相关loader
+```
+pnpm add style-loader css-loader -D
+```
