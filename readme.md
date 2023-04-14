@@ -275,3 +275,37 @@ c.我们希望能够找到源代码的错误，而不是打包后的，所以需
 升级到React17后，带来了全新的JSX转换，无需手动引入React，由Babel 或 TypeScript 在编译阶段自动引入_jsx依赖。
 
 但是如果你的项目使用的是typescript, 不更新相关配置，是无法识别到React的这一更新的，这就导致.tsx文件如果不引入React模块，jsx语法会报错。
+
+# 配置生产环境 webpack.prod.ts
+```
+import { Configuration } from "webpack";
+import { merge } from "webpack-merge";
+import baseConfig from "./webpack.base";
+
+const prodConfig: Configuration = merge(baseConfig, {
+  mode: "production", // 生产模式,会开启tree-shaking和压缩代码,以及其他优化
+});
+
+export default prodConfig;
+```
+在package.json中添加：
+```
+"scripts": {
+    // ...
+    "build": "webpack -c build/webpack.prod.ts"
+},
+```
+
+运行pnpm run build，如果想看打包结果，可以通过一个小工具来查看：
+如果之前使用npm，最简单的方法就是使用如下命令
+```
+npm i serve -g
+```
+如果是首次使用pnpm安装全局依赖，通过如下命令
+```
+pnpm setup
+source ~/.zshrc
+pnpm add serve -g
+```
+复制代码
+然后通过serve -S dist命令，启动一个服务来查看打包结果，如果不出意外，打开控制台启动的服务，就能看到页面了！
