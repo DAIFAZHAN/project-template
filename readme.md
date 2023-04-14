@@ -95,3 +95,8 @@ tsc --init
    "demo.ts"
 ]
 ```
+
+# 安装webpack依赖
+```
+pnpm add webpack webpack-cli -D
+```
