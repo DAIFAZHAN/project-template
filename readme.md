@@ -47,3 +47,38 @@ module.exports = {
   },
 };
 ```
+
+# React
+```
+pnpm add react react-dom
+```
+demo:
+```
+// index.js
+import React from "react";
+import ReactDom from "react-dom";
+
+class Hello extends React.Component {
+  render() {
+    return <div>开始使用React!</div>;
+  }
+}
+
+ReactDom.render(<Hello />, document.getElementById("root"));
+
+// dist/index.html
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/javascript" src="./bundle.js"></script>
+</body>
+
+</html>
+```
