@@ -82,3 +82,9 @@ ReactDom.render(<Hello />, document.getElementById("root"));
 
 </html>
 ```
+
+# devtool
+```
+devtool: 'inline-source-map',
+```
+在开发时需要定位错误，打包后的代码比较难以理解，这时候只需要在webpack.dev.config.js添加devtool 就能在错误的时候定位到自己写的代码。
